@@ -1,0 +1,37 @@
+https://leetcode.com/problems/time-needed-to-buy-tickets/description/
+
+class Solution {
+public:
+    int timeRequiredToBuy(vector<int>& tickets, int k) {
+        queue<int>q;
+        int time=0;
+        for(int t:tickets)
+        {
+            q.push(t);
+        }
+        while(1)
+        {
+            time++;
+            q.front()--;
+            if(q.front()==0)
+            {
+                q.pop();
+                if(k==0)
+                break;
+            }
+            else
+            {
+                q.push(q.front());
+                q.pop();
+
+            }
+            if(k==0)
+            {
+                k=q.size()-1;
+            }
+            else
+            k--;
+        }
+        return time;
+    }
+};
