@@ -1,0 +1,37 @@
+https://leetcode.com/problems/merge-nodes-in-between-zeros/description/
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode * originalHead = head ; 
+        ListNode * curr = head->next ; 
+
+
+        int S = 0 ; 
+
+
+
+        while(curr != NULL) 
+        {
+            if(curr->val == 0) 
+            {
+                head->val = S ; 
+                S = 0 ; 
+
+                if (curr->next != NULL) 
+                {
+                    head = head->next ; 
+                }
+
+            }
+
+
+            S = S + curr->val ; 
+
+            curr = curr->next ;
+        }
+
+
+        head->next = NULL ; 
+        return originalHead ; 
+    }
+};
