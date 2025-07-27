@@ -8,12 +8,13 @@ public:
         {
             if(st.empty())
                 st.push(s[i]);
-            else if(st.top()==(s[i+1]+'65'))
-                st.pop();
-                else if(st.top()==(s[i+1]+'65'))
-                st.pop();
             else
-            st.push(s[i]);
+            {
+                if(s[i]+32==st.top() || s[i]-32==st.top())
+                    st.pop();
+                else
+                st.push(s[i]);
+            }
         }
         string result;
         while(!st.empty())
