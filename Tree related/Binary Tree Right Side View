@@ -1,0 +1,32 @@
+https://leetcode.com/problems/binary-tree-right-side-view/description/
+
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int>ans;
+        bool freq[200]={false};
+        queue<pair<TreeNode*,int>>q;
+        if(root)
+            q.push({root,1});
+        while(!q.empty())
+        {
+            pair<TreeNode*,int>parent=q.front();
+            q.pop();
+           TreeNode* temp=parent.first;
+           int level=parent.second;
+           if(freq[level]==false)
+           {
+            ans.push_back(temp->val);
+            freq[level]=true;
+           }
+            if(temp->right)
+              q.push({temp->right,level+1});  
+           if(temp->left)
+              q.push({temp->left,level+1});  
+           
+        
+        }
+        return ans;
+
+    }
+};
