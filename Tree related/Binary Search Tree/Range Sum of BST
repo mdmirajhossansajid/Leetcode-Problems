@@ -1,0 +1,25 @@
+https://leetcode.com/problems/range-sum-of-bst/description/
+
+
+
+class Solution {
+public:
+int sum=0;
+    void sajid(TreeNode* root, int low, int high)
+    {
+        
+        if(root==NULL)
+         return;
+        if(root->val>=low && root->val<=high)
+        {
+            sum+=root->val;
+        } 
+        sajid(root->left,low,high);
+        sajid(root->right,low,high);
+    }
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        sajid(root,low,high);
+        return sum;
+        
+    }
+};
