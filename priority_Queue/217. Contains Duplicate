@@ -22,6 +22,11 @@ public:
         set<int> s;
         for (int x : nums)
             s.insert(x);
-        return s.size() != nums.size();
+       // return s.size() != nums.size();
+if (s.size() < nums.size()) 
+    return true;
+else 
+    return false;
+
     }
 };
