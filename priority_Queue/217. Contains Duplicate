@@ -1,0 +1,27 @@
+https://leetcode.com/problems/contains-duplicate/description/
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        priority_queue<int>pq;
+        for(int x:nums)
+          pq.push(x);
+        while (pq.size() > 1) { 
+            int f = pq.top();
+            pq.pop();
+            if (pq.top() == f) return true; 
+        }
+        return false;
+        }
+};
+
+---------------------------------------using set sTL
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        set<int> s;
+        for (int x : nums)
+            s.insert(x);
+        return s.size() != nums.size();
+    }
+};
